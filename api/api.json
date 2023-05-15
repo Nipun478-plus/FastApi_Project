@@ -1,0 +1,300 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+    },
+    "paths": {
+    "/api/empolyees": {
+    "get": {
+    "summary": "Index",
+    "operationId": "index_api_empolyees_get",
+    "responses": {
+    "200": {
+    "description": "Successful Response",
+    "content": {
+    "application/json": {
+    "schema": {}
+    }
+    }
+    }
+    }
+    },
+    "post": {
+    "summary": "Store",
+    "operationId": "store_api_empolyees_post",
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/empolyee"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "Successful Response",
+    "content": {
+    "application/json": {
+    "schema": {}
+    }
+    }
+    },
+    "422": {
+    "description": "Validation Error",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/HTTPValidationError"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/empolyees/{id}": {
+    "put": {
+    "summary": "Update",
+    "operationId": "update_api_empolyees__id__put",
+    "parameters": [
+    {
+    "required": true,
+    "schema": {
+    "title": "Id",
+    "type": "integer"
+    },
+    "name": "id",
+    "in": "path"
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/empolyee"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "Successful Response",
+    "content": {
+    "application/json": {
+    "schema": {}
+    }
+    }
+    },
+    "422": {
+    "description": "Validation Error",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/HTTPValidationError"
+    }
+    }
+    }
+    }
+    }
+    },
+    "delete": {
+    "summary": "Delete",
+    "operationId": "delete_api_empolyees__id__delete",
+    "parameters": [
+    {
+    "required": true,
+    "schema": {
+    "title": "Id",
+    "type": "integer"
+    },
+    "name": "id",
+    "in": "path"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "Successful Response",
+    "content": {
+    "application/json": {
+    "schema": {}
+    }
+    }
+    },
+    "422": {
+    "description": "Validation Error",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/HTTPValidationError"
+    }
+    }
+    }
+    }
+    }
+    },
+    "patch": {
+    "summary": "Edit Data",
+    "operationId": "edit_data_api_empolyees__id__patch",
+    "parameters": [
+    {
+    "required": true,
+    "schema": {
+    "title": "Id",
+    "type": "integer"
+    },
+    "name": "id",
+    "in": "path"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "Successful Response",
+    "content": {
+    "application/json": {
+    "schema": {}
+    }
+    }
+    },
+    "422": {
+    "description": "Validation Error",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/HTTPValidationError"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/empolyees/{search}": {
+    "get": {
+    "summary": "Search",
+    "operationId": "search_api_empolyees__search__get",
+    "parameters": [
+    {
+    "required": true,
+    "schema": {
+    "title": "Search"
+    },
+    "name": "search",
+    "in": "path"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "Successful Response",
+    "content": {
+    "application/json": {
+    "schema": {}
+    }
+    }
+    },
+    "422": {
+    "description": "Validation Error",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/HTTPValidationError"
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "components": {
+    "schemas": {
+    "HTTPValidationError": {
+    "title": "HTTPValidationError",
+    "type": "object",
+    "properties": {
+    "detail": {
+    "title": "Detail",
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/ValidationError"
+    }
+    }
+    }
+    },
+    "ValidationError": {
+    "title": "ValidationError",
+    "required": [
+    "loc",
+    "msg",
+    "type"
+    ],
+    "type": "object",
+    "properties": {
+    "loc": {
+    "title": "Location",
+    "type": "array",
+    "items": {
+    "anyOf": [
+    {
+    "type": "string"
+    },
+    {
+    "type": "integer"
+    }
+    ]
+    }
+    },
+    "msg": {
+    "title": "Message",
+    "type": "string"
+    },
+    "type": {
+    "title": "Error Type",
+    "type": "string"
+    }
+    }
+    },
+    "empolyee": {
+    "title": "empolyee",
+    "required": [
+    "name",
+    "email",
+    "age",
+    "country",
+    "position",
+    "salary"
+    ],
+    "type": "object",
+    "properties": {
+    "name": {
+    "title": "Name",
+    "type": "string"
+    },
+    "email": {
+    "title": "Email",
+    "type": "string"
+    },
+    "age": {
+    "title": "Age",
+    "type": "integer"
+    },
+    "country": {
+    "title": "Country",
+    "type": "string"
+    },
+    "position": {
+    "title": "Position",
+    "type": "string"
+    },
+    "salary": {
+    "title": "Salary",
+    "type": "integer"
+    }
+    }
+    }
+    }
+    }
+    }
